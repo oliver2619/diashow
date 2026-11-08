@@ -1,0 +1,5 @@
+@use '../../../style/page.scss';
+
+:host {
+    @include page.default();
+}

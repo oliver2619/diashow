@@ -1,0 +1,166 @@
+$max-transition: 9;
+
+@keyframes in-0 {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes out-0 {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@keyframes in-1 {
+    from { opacity: 0; transform: scale(0); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes out-1 {
+    from { opacity: 1; transform: scale(1); }
+    to { opacity: 0; transform: scale(0); }
+}
+
+@keyframes in-2 {
+    from { transform: translateY(-100vh); }
+    to { transform: translateY(0vh); }
+}
+
+@keyframes out-2 {
+    from { transform: translateY(0vh); }
+    to { transform: translateY(100vh); }
+}
+
+@keyframes in-3 {
+    from { transform: translateX(-100vw); }
+    to { transform: translateX(0vw);  }
+}
+
+@keyframes out-3 {
+    from { transform: translateX(0vw); }
+    to { transform: translateX(100vw); }
+}
+
+@keyframes in-4 {
+    from { transform: translateY(-100vh) scale(0); }
+    to { transform: translateY(0vh) scale(1); }
+}
+
+@keyframes out-4 {
+    from { transform: translateY(0vh) scale(1); }
+    to { transform: translateY(100vh) scale(0); }
+}
+
+@keyframes in-5 {
+    from { transform: rotate(-360deg) scale(0); opacity: 0; }
+    to { transform: rotate(0deg) scale(1); opacity: 1; }
+}
+
+@keyframes out-5 {
+    from { transform: rotate(0deg) scale(1); opacity: 1; }
+    to { transform: rotate(360deg) scale(0); opacity: 0; }
+}
+
+@keyframes in-6 {
+    from { transform: scaleY(0); opacity: 0; }
+    50% { transform: scaleY(0); opacity: 0; }
+    to { transform: scaleY(1); opacity: 1; }
+}
+
+@keyframes out-6 {
+    from { transform: scaleY(1); opacity: 1; }
+    50% { transform: scaleY(0); opacity: 0; }
+    to { transform: scaleY(0); opacity: 0; }
+}
+
+@keyframes in-7 {
+    from { filter: hue-rotate(180deg); opacity: 0; }
+    50% { filter: hue-rotate(180deg); opacity: 1; }
+    to { filter: hue-rotate(0deg); opacity: 1; }
+}
+
+@keyframes out-7 {
+    from { filter: saturate(1); opacity: 1; }
+    50% { filter: saturate(0); opacity: 0; }
+    to { filter: saturate(0); opacity: 0; }
+}
+
+@keyframes in-8 {
+    from { filter: saturate(0); opacity: 0; }
+    50% { filter: saturate(0); opacity: 1; }
+    to { filter: saturate(1); opacity: 1; }
+}
+
+@keyframes out-8 {
+    from { filter: saturate(1); opacity: 1; }
+    50% { filter: saturate(0); opacity: 0; }
+    to { filter: saturate(0); opacity: 0; }
+}
+
+@mixin _ani() {
+    animation-timing-function: ease-in-out;
+    animation-duration: 2000ms;
+    animation-fill-mode: both;
+}
+
+@mixin _in($i) {
+    animation-name: in-#{$i};
+    @include _ani();
+}
+
+@mixin _out($i) {
+    animation-name: out-#{$i};
+    @include _ani();
+}
+
+:host {
+    position: relative;
+    align-self: stretch;
+    flex: 1 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    overflow: hidden;
+}
+
+img.image {
+    max-width: 100vw;
+    max-height: 100vh;
+    position: absolute;
+}
+
+@for $i from 0 through $max-transition - 1 {
+    img.in-#{$i} {
+        @include _in($i);
+    }
+
+    img.out-#{$i} {
+        @include _out($i);
+    }
+}
+
+.pause {
+    position: fixed;
+    z-index: 10;
+    color: white;
+    text-shadow: 0 0 5px black;
+    height: 10vh;
+}
+
+.pause, .dia-show-menu {
+
+    transition: opacity 400ms ease-in-out;
+
+    &.visible {
+        opacity: 1;
+    }
+
+    &:not(.visible) {
+        opacity: 0;
+
+        button {
+            pointer-events: none;
+        }
+    }
+}

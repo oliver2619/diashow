@@ -1,0 +1,26 @@
+<h1>Neue Diashow</h1>
+<form>
+    <div class="form-group">
+        <label for="newShow.folder">Ordner</label>
+        <div class="input-group">
+            <input type="text" readonly="readonly" [value]="folder()" (click)="onSelectFolder()" size="40">
+            <button id="newShow.folder" type="button" (click)="onSelectFolder()"><img src="icons/folder-open.svg"></button>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Sortieren</label>
+        <div class="input-group">
+            <label><input type="radio" [formField]="form.mode" value="SORT_BY_FILENAME">Name</label>
+            <label><input type="radio" [formField]="form.mode" value="SORT_BY_LAST_MODIFIED">Datum</label>
+            <label><input type="radio" [formField]="form.mode" value="RANDOM">Zufällig</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="newShow.duration">Sekunden bis Wechsel</label>
+        <input id="newShow.duration" type="number" [formField]="form.duration">
+    </div>
+</form>
+<div class="button-list horizontal">
+    <button type="button" routerLink="/menu">Zurück</button>
+    <button type="button" [disabled]="!canStart()" (click)="onStart()">Starten</button>
+</div>

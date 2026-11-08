@@ -1,0 +1,51 @@
+{
+  "name": "diashow",
+  "version": "1.0.0",
+  "description": "Diashow for viewing images",
+  "main": "app/main.js",
+  "license": "MIT",
+  "scripts": {
+    "ng": "ng",
+    "start-angular": "ng serve",
+    "start-electron": "electron . develop",
+    "build-angular": "ng build --base-href ./",
+    "build-electron": "electron-forge make",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+    "start-forge": "electron-forge start",
+    "package": "electron-forge package"
+  },
+  "private": true,
+  "packageManager": "npm@11.19.0",
+  "dependencies": {
+    "@angular/common": "^22.2.0",
+    "@angular/compiler": "^22.2.0",
+    "@angular/core": "^22.2.0",
+    "@angular/forms": "^22.2.0",
+    "@angular/platform-browser": "^22.2.0",
+    "@angular/router": "^22.2.0",
+    "@ngrx/store": "^22.0.1",
+    "electron-squirrel-startup": "^1.0.1",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@angular/build": "^22.2.1",
+    "@angular/cli": "^22.2.1",
+    "@angular/compiler-cli": "^22.2.0",
+    "@electron-forge/cli": "^8.0.1",
+    "@electron-forge/maker-deb": "^8.0.1",
+    "@electron-forge/maker-rpm": "^8.0.1",
+    "@electron-forge/maker-squirrel": "^8.0.1",
+    "@electron-forge/maker-zip": "^8.0.1",
+    "@electron-forge/plugin-auto-unpack-natives": "^8.0.1",
+    "@electron-forge/plugin-fuses": "^8.0.1",
+    "@electron/fuses": "^2.1.3",
+    "concurrently": "^10.0.7",
+    "electron": "^45.2.3",
+    "jsdom": "^30.0.0",
+    "prettier": "^3.8.1",
+    "typescript": "~6.0.2",
+    "vitest": "^5.0.0"
+  }
+}

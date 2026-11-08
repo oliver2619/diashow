@@ -1,0 +1,23 @@
+@for(i of items(); track i.url) {
+    <img [src]="i.url" class="image {{ i.cssClass }}-{{ i.animation }}" (animationend)="onAnimationEnd(i.url)">
+}
+<img src="icons/pause.svg" class="pause" [class]="{visible: pause()}">
+<div class="dia-show-menu" [class]="{visible: menuVisible()}">
+    <button type="button" (click)="onExit()"><img src="icons/door.svg"></button>
+    <button type="button" (click)="onTogglePause()">
+        @if(pause()) {
+            <img src="icons/play.svg">
+        } @else {
+            <img src="icons/pause.svg">
+        }
+    </button>
+    <button type="button" [disabled]="!canPrev()" (click)="onPrev()"><img src="icons/backward.svg"></button>
+    <button type="button" (click)="onNext()"><img src="icons/forward.svg"></button>
+    <button type="button" (click)="onToggleFullscreen()">
+        @if(fullscreen()) {
+            <img src="icons/restore.svg">
+        } @else {
+            <img src="icons/fullscreen.svg">
+        }
+    </button>
+</div>
